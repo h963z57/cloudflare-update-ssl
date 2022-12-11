@@ -11,3 +11,6 @@ echo "Connect to S3"
 echo "Copy files to s3"
 ./mc cp /etc/letsencrypt/live/$DOMAIN_NAME/fullchain.pem s3/$S3_PATH/fullchain.pem
 ./mc cp /etc/letsencrypt/live/$DOMAIN_NAME/privkey.pem s3/$S3_PATH/privkey.pem
+
+echo "Send report"
+cat /var/log/letsencrypt/letsencrypt.log | mail -s 'Update SSL' -A /etc/letsencrypt/live/$DOMAIN_NAME/fullchain.pem -A /etc/letsencrypt/live/$DOMAIN_NAME/privkey.pem $HOSTMASTER_EMAIL
