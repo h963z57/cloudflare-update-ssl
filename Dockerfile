@@ -12,7 +12,7 @@ RUN touch /root/cloudflareapi.cfg \
   && chmod 400 /root/cloudflareapi.cfg \
   && chmod a+x /entrypoint.sh
 
-RUN apt-get update && apt-get install python3-pip wget -y \
+RUN apt-get update && apt-get install python3-pip mailutils wget -y \
   && pip3 install certbot-dns-cloudflare --no-cache-dir \
     && wget https://dl.min.io/client/mc/release/linux-amd64/mc \
     && chmod +x mc
