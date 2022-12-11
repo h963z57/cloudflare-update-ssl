@@ -8,6 +8,10 @@ FROM debian:latest
 
 COPY ./entrypoint.sh /entrypoint.sh
 
+#--TMP
+RUN touch /test.txt \
+ && echo 'Hello world' >> test.txt
+
 RUN touch /root/cloudflareapi.cfg \
   && chmod 400 /root/cloudflareapi.cfg \
   && chmod a+x /entrypoint.sh
@@ -17,6 +21,6 @@ RUN apt-get update && apt-get install python3-pip wget -y \
     && wget https://dl.min.io/client/mc/release/linux-amd64/mc \
     && chmod +x mc
 
-ENTRYPOINT ["/bin/bash"]
+CMD ["tail", "-f", "/test.txt"]
 
 ##ENTRYPOINT ["/entrypoint.sh"]
