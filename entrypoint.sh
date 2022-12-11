@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Create credentials file"
-echo "dns_cloudflare_api_token = " $CLOUDFLARE_TOKEN >> /root/cloudflareapi.cfg
+echo "dns_cloudflare_api_token = $CLOUDFLARE_TOKEN">> /root/cloudflareapi.cfg
 
 echo "Create SSL"
 certbot certonly --dns-cloudflare --dns-cloudflare-credentials /root/cloudflareapi.cfg -d *.$DOMAIN_NAME -d $DOMAIN_NAME -m $HOSTMASTER_EMAIL --non-interactive --agree-tos
