@@ -1,11 +1,12 @@
 # Cloudflare update ssl
 
 For run container :
-> docker run -d -t h963z57/cloudflare_update_ssl:main \
--e CLOUDFLARE_TOKEN=supersecretoken \
--e DOMAIN_NAME=example.com \
--e HOSTMASTER_EMAIL=hostmaster@example.com \
--e S3_ADDRESS=https://s3.example.com:8080 \
--e S3_LOGIN=mylogin \
--e S3_PASSWORD=mypassword \
--e S3_PATH=bucket/SSL_directory
+> docker run -it -t \
+--env CLOUDFLARE_TOKEN='SECRETOKEN' \
+--env DOMAIN_NAME='example.com' \
+--env HOSTMASTER_EMAIL='hostmaster@example.com' \
+--env S3_ADDRESS='https://s3.example.com:9000' \
+--env S3_LOGIN='mylogin' \
+--env S3_PASSWORD='mypassword' \
+--env S3_PATH='bucket/SSL_directory' \
+h963z57/cloudflare_update_ssl:main
