@@ -3,7 +3,7 @@ echo "Create credentials file"
 echo "dns_cloudflare_api_token = $CLOUDFLARE_TOKEN">> /root/cloudflareapi.cfg
 
 echo "Create SSL"
-certbot certonly --dns-cloudflare --dns-cloudflare-credentials /root/cloudflareapi.cfg -d *.$DOMAIN_NAME -d $DOMAIN_NAME -m $HOSTMASTER_EMAIL --non-interactive --agree-tos
+certbot certonly --dns-cloudflare --dns-cloudflare-credentials /root/cloudflareapi.cfg -d *.$DOMAIN_NAME -d $DOMAIN_NAME -m $HOSTMASTER_EMAIL --non-interactive --agree-tos --dns-cloudflare-propagation-seconds
 
 echo "Connect to S3"
 ./mc alias set s3 $S3_ADDRESS $S3_LOGIN $S3_PASSWORD
